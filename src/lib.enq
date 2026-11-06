@@ -3,7 +3,6 @@
 
 import core::option::Option
 import core::vec::Vec
-import std::os
 
 /// Describes how an option consumes command-line tokens.
 pub enum OptionKind {
@@ -300,31 +299,4 @@ fn find_option(options: Vec[OptionSpec], token: str) -> Option[OptionSpec] {
 
 fn starts_with_dash(value: str) -> bool {
     ret value.len() > 0_usize && value.slice(0_usize, 1_usize) == "-"
-}
-
-/// Returns the process argument count through the parser boundary.
-pub fn process_arg_count() -> usize {
-    ret os::argc()
-}
-
-/// Returns one raw process argument through the parser boundary.
-pub fn process_arg(index: usize) -> Option[str] {
-    ret os::argv(index)
-}
-
-/// Copies process arguments beginning at `start` for a command parser.
-pub fn process_args(start: usize) -> Vec[str] {
-    let mut out = Vec[str]::new()
-    let mut index = start
-    while index < process_arg_count() {
-        match process_arg(index) {
-            Some(value) => {
-                out.push(value)
-            }
-            None => {
-            }
-        }
-        index += 1_usize
-    }
-    ret out
 }

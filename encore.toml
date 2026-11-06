@@ -2,8 +2,8 @@
 name = "argparse"
 version = "0.0.0"
 repository = "https://github.com/encore-language-index/argparse"
-encore = ">=0.1.6"
+encore = ">=0.1.14"
 description = "Small typed command-line argument parser for Encore tools"
 readme = "README.md"
 licence = "MIT"
-dependencies = ["path@../std"]
+dependencies = []

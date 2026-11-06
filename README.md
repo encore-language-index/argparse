@@ -2,9 +2,12 @@
 
 `argparse` is a small, dependency-light command-line parser for Encore
 programs. It provides typed option specifications, deterministic diagnostics,
-and a single process-argument boundary for command-line tools.
+and accepts a supplied vector of strings without importing an OS runtime.
 
 ```encore
+import argparse::{CommandSpec, OptionSpec, ParseOutcome, parse}
+import std::args::process_args
+
 let spec = CommandSpec::new("build")
     .option(OptionSpec::value("--profile", "", "name", "optimization profile"))
     .option(OptionSpec::flag("--help", "-h", "show help"))
@@ -15,7 +18,7 @@ match parse(spec, process_args(2_usize)) {
 }
 ```
 
-Use `process_arg_count()` and `process_arg(index)` when a command needs the
+Import `process_arg_count()` and `process_arg(index)` from `std::args` when a command needs the
 raw process vector (for example, to forward arguments after `--`).
 
 ## SDK development
