@@ -5,3 +5,5 @@ target/
 .env.*
 !.env.example
 !.env.template
+.encore_cache/
+__pycache__/
